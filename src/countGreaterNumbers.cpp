@@ -21,5 +21,57 @@ struct transaction {
 };
 
 int countGreaterNumbers(struct transaction *Arr, int len, char *date) {
-	return -1;
+
+	int iterator = 0, count = 0;
+	int iterator2 = 6;
+	for (iterator = 0; iterator < len; iterator++)
+	{
+		while (iterator2 < 10)
+		{
+			if (Arr[iterator].date[iterator2] - 48 == date[iterator2] - 48)
+				iterator2++;
+			else if (Arr[iterator].date[iterator2] - 48 > date[iterator2] - 48)
+			{
+				return (len - iterator);
+			}
+			else
+			{
+				break;
+			}
+		}
+		//printf("%d", iterator2);
+		if (iterator2 == 10)
+		{
+			iterator2 = 3;
+			while (iterator2 < 5)
+			{
+				if (Arr[iterator].date[iterator2] == date[iterator2])
+					iterator2++;
+				else if (Arr[iterator].date[iterator2] - 48 > date[iterator2] - 48)
+				{
+					return (len - iterator);
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+		if (iterator2 == 5)
+		{
+			iterator2 = 0;
+			while (iterator2 < 2)
+			{
+				if (Arr[iterator].date[iterator2] == date[iterator2])
+					iterator2++;
+				else if (Arr[iterator].date[iterator2] - 48 > date[iterator2] - 48)
+				{
+					return (len - iterator);
+				}
+				else
+					break;
+			}
+		}
+	}
+	return count;
 }
